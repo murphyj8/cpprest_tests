@@ -1,0 +1,6 @@
+[web_interface]
+address = "localhost:8080"
+
+[nft_listings]
+directory="./data"
+
