@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyNFT is ERC721 {
+contract MyNFT is ERC721URIStorage, Ownable {
     uint256 private _tokenIds;
 
     struct CustomData {
@@ -33,7 +33,7 @@ contract MyNFT is ERC721 {
 
     function getTokenCustomData(uint256 tokenId) 
         public view returns (CustomData memory) 
-    {
+    { 
         require(_exists(tokenId), "Token does not exist");
         return _tokenCustomData[tokenId];
     }

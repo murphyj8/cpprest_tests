@@ -51,7 +51,8 @@ function(compile_solidity SOURCE_FILE)
 
     add_custom_command(
         OUTPUT ${OUTPUT_FILE} ${ABI_FILE}
-        COMMAND ${SOLC} --allow-paths ${CMAKE_SOURCE_DIR}/contracts/node_modules ${SOURCE_FILE} --bin --abi --optimize -o ${SOLIDITY_BUILD_DIR} --overwrite
+        --base-path . --include-path ./node_modules
+        COMMAND ${SOLC} --base-path ${CMAKE_SOURCE_DIR}/contracts --include-path ${CMAKE_SOURCE_DIR}/contracts/node_modules --allow-paths ${CMAKE_SOURCE_DIR}/contracts/node_modules ${SOURCE_FILE} --bin --abi --optimize -o ${SOLIDITY_BUILD_DIR} --overwrite
         DEPENDS ${SOURCE_FILE}
         COMMENT "Compiling ${SOURCE_FILE}..."
     )
